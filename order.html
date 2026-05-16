@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pending Orders</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0f0f0f;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.order-box {
+    background: #1c1c1c;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border-left: 5px solid orange;
+}
+
+.status {
+    color: orange;
+    font-weight: bold;
+}
+
+.empty {
+    text-align: center;
+    margin-top: 50px;
+    color: gray;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📦 Pending Orders</h1>
+
+<div id="ordersContainer"></div>
+
+<script>
+// LOAD ORDERS FROM LOCAL STORAGE
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+const container = document.getElementById("ordersContainer");
+
+if(orders.length === 0){
+    container.innerHTML = `<p class="empty">No pending orders yet</p>`;
+} else {
+    orders.forEach((order, index) => {
+        container.innerHTML += `
+        <div class="order-box">
+            <p><strong>Service:</strong> ${order.service}</p>
+            <p><strong>Quantity:</strong> ${order.quantity}</p>
+            <p><strong>Location:</strong> ${order.location}</p>
+            <p class="status">🟡 Pending</p>
+        </div>
+        `;
+    });
+}
+
+
+
+// GET DATA FROM URL
+const params = new URLSearchParams(window.location.search);
+
+const service = params.get("service");
+document.getElementById("serviceName").innerText = service;
+
+const whatsappNumber = "2349071068190"; // CHANGE THIS
+
+// SEND ORDER FUNCTION (PUT IT HERE)
+function sendOrder() {
+
+    const service = document.getElementById("serviceName").innerText;
+    const qty = document.getElementById("quantity").value;
+    const location = document.getElementById("location").value;
+
+    // SAVE TO LOCAL STORAGE (PENDING ORDERS)
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    orders.push({
+        service: service,
+        quantity: qty,
+        location: location
+    });
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    // WHATSAPP MESSAGE
+    const message = `Hello Lifez Print Solutions 👋
+
+Service: ${service}
+Quantity: ${qty}
+Location: ${location}`;
+
+    window.open(
+        "https://wa.me/" + 2349071068190 + "?text=" + encodeURIComponent(message),
+        "_blank"
+    );
+}
+
+
+</script>
+
+</body>
+</html>
+
+ 

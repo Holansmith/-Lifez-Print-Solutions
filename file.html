@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFEZ PRINT SOLUTIONS</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    
+
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <img src="pictures/WhatsApp Image 2026-04-18 at 10.09.13 PM.jpeg" alt="Logo" class="logo-full">
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+  <!-- Your homepage -->
+</div>
+
+
+
+
+    <header>
+
+        <h1>Lifez Print Solutions</h1>
+        <nav class="navbar"> 
+
+            <ul class="nav-links">
+                <a href="file.html">Home</a>
+                <a href="service.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </ul>
+        </nav>
+
+    </header>
+
+<section class="hero">
+    <div class="bg-image">
+        <img src="pictures/20260211_171736.jpg" class="img img1">
+        <img src="pictures/20260211_171739.jpg" class="img img2">
+        <img src="pictures/20260211_172106.jpg" class="img img3">
+        <img src="pictures/20260221_135514.jpg" class="img img4">
+        <img src="pictures/20260221_155321.jpg" class="img img5">
+    </div>
+
+
+    <div class="content">
+    <h2>Professional Printing Services</h2>
+    <p>High quality prints for businesses and individuals</p>
+
+    </div>
+
+     <div class="service-button">
+        <a href="service.html" class="service-btn">Our Services</a>
+
+    </div>
+     
+</section>
+
+<script>
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  const mainContent = document.getElementById("main-content");
+
+  // safety check
+  if (!preloader || !mainContent) {
+    console.error("Missing preloader or main-content ID");
+    return;
+  }
+
+  setTimeout(() => {
+    preloader.style.opacity = "0";
+
+    // SHOW PAGE
+    mainContent.style.opacity = "1";
+    mainContent.style.transform = "scale(1)";
+
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 1000);
+
+  }, 2200);
+});
+</script>
+
+
+
+</body>
+</html>
+
+
+
+
